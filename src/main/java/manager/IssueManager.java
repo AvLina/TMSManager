@@ -35,7 +35,7 @@ public class IssueManager {
         return result;
     }
 
-    public Collection<Issue> statusClose() {
+    private Collection<Issue> statusClose() {
         List<Issue> result = new ArrayList();
         for (Issue tmp : repository.findAll()) {
             if (!tmp.isStatus()) {
@@ -51,6 +51,10 @@ public class IssueManager {
 
     public Collection<Issue> filterByAssignee(String assignee) {
         return filterBy(issue -> issue.getAssignee().equals(assignee));
+    }
+
+    public Collection<Issue> filterByLabel(Collection<String> label) {
+        return filterBy(issue -> issue.getLabel().containsAll(label));
     }
 
     public void closingAndOpeningIssueById(int id) {

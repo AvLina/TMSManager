@@ -16,7 +16,7 @@ public class IssueManagerTest {
     private IssueManager issueManager = new IssueManager(repository);
 
     private Issue one = new Issue(1111, "JUnit 4 migration tips should mention switched assertion message position", false,
-            "Marcono1234", "No one assigned");
+            "Marcono1234", "No one assigned", Set.of("JUnit"));
 
     @BeforeEach
     public void setUp() {

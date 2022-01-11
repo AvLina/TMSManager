@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -18,6 +20,7 @@ public class Issue implements Comparable <Issue> {
     private boolean status;
     private String author;
     private String assignee;
+    private Collection label = new HashSet<String>();
 
     @Override
     public boolean equals(Object o) {
@@ -28,12 +31,13 @@ public class Issue implements Comparable <Issue> {
                 status == issue.status &&
                 name.equals(issue.name) &&
                 author.equals(issue.author) &&
-                assignee.equals(issue.assignee);
+                assignee.equals(issue.assignee) &&
+                label.equals(issue.label);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, status, author, assignee);
+        return Objects.hash(id, name, status, author, assignee, label);
     }
 
     @Override
